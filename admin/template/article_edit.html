@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<?php require ADMIN_TEMPLATE_PATH . 'header.html';?>
+<?php require ADMIN_TEMPLATE_PATH . 'left.html';?>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        文章编辑
+                        <small>文章</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="user.php?a=check"><i class="fa fa-dashboard"></i> 管理中心</a></li>
+                        <li ><a href="article.php?a=list">文章</a></li>
+                        <li class="active">文章添加</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box">
+                                <form action="article.php?a=update&id=<?php echo $id;?>" method="post">
+                                    <div class="box-header">
+                                        <h3 class="box-title"></h3>
+                                        <a href="article.php?a=list" class="btn btn-default pull-right">文章列表</a>
+                                    </div><!-- /.box-header -->
+
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label for="inputCategoryId">文章分类</label>
+                                            <select name="category_id" id="inputCategoryId" class="form-control">
+                                            <?php foreach($category_list as $category):?>
+                                                <option value="<?php echo $category['id'];?>"><?php echo $category['title'];?></option>
+                                            <?php endforeach;?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputSubject">文章标题</label>
+                                            <input type="text" name="subject" placeholder="标题" id="inputSubject" class="form-control" value="<?php echo $article['title'];?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputCover">文章封面</label>
+                                            <input type="file" name="cover" id="inputCover" class="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputSummary">文章摘要</label>
+                                            <textarea name="summary" placeholder="<?php echo $article['summary'];?>" id="inputSummary" class="form-control" ><?php echo $article['summary'];?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputContent">文章内容</label>
+                                            <textarea name="content" placeholder="<?php echo $article['content'];?>" id="inputContent" class="form-control" cols="30" rows="10"><?php echo $article['content'];?></textarea>
+                                        </div>
+                                        <div class="form-control">
+                                            <label for="inputTag">文章标签</label>
+                                            <div class="row">
+                                            </div>
+                                        </div>
+                                    </div><!-- /.box-body -->
+                                    <div class="box-footer clearfix">
+                                        <button class="btn btn-primary" type="submit" name="submit" value="publish">发布</button>
+                                        <button class="btn btn-primary" type="submit" name="submit" value="save">仅保存</button>
+                                    </div><!-- /.box-footer -->
+                                </form>
+
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+
+                </section><!-- /.content -->
+
+                <section class="content-footer">
+                    <div class="text-center">
+                        &copy;ITbull，泰牛程序员
+                    </div>
+                </section><!-- /.content-footer -->
+
+            </aside><!-- /.right-side -->
+        </div><!-- ./wrapper -->
+
+
+        <!-- jQuery 2.0.2 -->
+        <script src="js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- AdminLTE App -->
+        <script src="js/app.js" type="text/javascript"></script>
+
+    </body>
+</html>
